@@ -18,7 +18,7 @@
 
                 <div class="mt-4 d-flex justify-content-between">
                     <div>
-                        <a href="#">Not registered yet?</a>
+                        <a href="{{ route('register') }}">Not registered yet?</a>
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-secondary px-5">LOGIN</button>
