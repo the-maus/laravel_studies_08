@@ -1,35 +1,36 @@
+
 @extends('layouts.main_layout')
 
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-5 card p-5">
-            <form action="{{ route('login') }}" method="post">
+            <form action="{{ route('password.update') }}" method="post">
                 @csrf
-                <p class="display-6 text-center">LOGIN</p>
+                <p class="display-6 text-center">Reset password</p>
+                <input type="hidden" name="token" value={{ $request->route('token') }}>
                 <div class="mb-3">
-                    <label for="email">User</label>
-                    <input type="email" name="email" id="email" class="form-control">
+                    <label for="email">E-mail</label>
+                    <input type="mail" name="email" id="email" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
+                <div class="mb-3">
+                    <label for="password_confirmation">Password confirmation</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                </div>
 
                 <div class="mt-4 d-flex justify-content-between">
                     <div>
-                        <div>
-                            <a href="{{ route('register') }}">Not registered yet?</a>
-                        </div>
-                        <div>
-                            <a href="{{ route('password.request') }}">Forgot your password?</a>
-                        </div>
+                        <a href="/">Home page</a>
                     </div>
                     <div class="text-end">
-                        <button type="submit" class="btn btn-secondary px-5">LOGIN</button>
+                        <button type="submit" class="btn btn-secondary px-5">Reset password</button>
                     </div>
                 </div>
-                {{-- errors --}}
+
                 @if($errors->any())
                     <div class="alert alert-danger mt-4">
                         <ul class="m-0">
